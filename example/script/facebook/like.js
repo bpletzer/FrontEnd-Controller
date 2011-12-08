@@ -1,10 +1,5 @@
 define(["moduleMediator"], function(moduleMediator){
-  var exports = {},
-      click = function(){
-        counter = counter + 1;
-        moduleMediator.publish('facebook.like');
-      }
-      counter = 0;
+  var exports = {};
 
 
 function hasClass(ele,cls) {
@@ -24,7 +19,12 @@ function removeClass(ele,cls) {
 
   exports.init = function(item){
     var img,
-        mediator = moduleMediator;
+        mediator = moduleMediator
+        counter = 0,
+        click = function(){
+          counter = counter + 1;
+          moduleMediator.publish('facebook.like');
+        };
 
     removeClass(item, 'off');
 
@@ -33,8 +33,8 @@ function removeClass(ele,cls) {
     img.onclick = click;
     item.appendChild(img);
 
-    while (window.click[0]) {
-      click.call(window.click.shift());
+    if (item.className.indexOf('clicked')!==-1){
+      click.call(item);
     }
   };
 
