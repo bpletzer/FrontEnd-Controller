@@ -1,5 +1,10 @@
 define(["moduleMediator"], function(moduleMediator){
-  var exports = {};
+  var exports = {},
+      click = function(){
+        counter = counter + 1;
+        moduleMediator.publish('facebook.like');
+      }
+      counter = 0;
 
 
 function hasClass(ele,cls) {
@@ -15,20 +20,22 @@ function removeClass(ele,cls) {
 	}
 }
 
+  
+
   exports.init = function(item){
     var img,
-        mediator = moduleMediator,
-        counter = 0;
+        mediator = moduleMediator;
 
     removeClass(item, 'off');
 
     img = document.createElement("img")
     img.src = "script/facebook/images/facebook_like_list_view.gif";
-    img.onclick = function(){
-      counter = counter + 1;
-      moduleMediator.publish('facebook.like');
-    };
+    img.onclick = click;
     item.appendChild(img);
+
+    while (window.click[0]) {
+      click.call(window.click.shift());
+    }
   };
 
   return exports;
