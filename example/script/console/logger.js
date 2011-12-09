@@ -7,8 +7,8 @@ define(["moduleMediator"], function(moduleMediator){
       console.log('event happend: like.facebook')
     });
 
-    moduleMediator.subscribe("buttoned", function(){
-      console.log('event happend: der button geht ab')
+    moduleMediator.subscribe("muh", function(msg){
+      console.log('Die Kuh sagt:' + msg)
     });
 
   };
