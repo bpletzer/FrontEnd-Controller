@@ -12,6 +12,7 @@
 
 <body>
   <div id="container">
+
     <header>
       <h1>FrontEnd Controller Example Integration</h1>
     </header>
@@ -19,6 +20,10 @@
       <span>This page shows off, how to integrate the FrontEnd Controller in one's projects.</span>
 
       <div data-module="facebook/like" class="facebook_like off" onclick="this.className+=' clicked'"></div>
+
+      <div data-module="bildergalerie/controllers/main" data-parameters="one" onclick="this.clk=(this.clk||0)+1;">
+        <img src="images/first.jpg" />
+      </div>
 
     </div>
     <footer>

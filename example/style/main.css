@@ -3,3 +3,15 @@
   height: 20px;
   width: 100px;
 }
+
+.facebook_like.off.clicked {
+  background: url("../script/facebook/images/facebook_like_list_view_animated.gif") no-repeat;
+}
+
+.logger.eventBox {
+  position: absolute;
+  top: 10px;
+  float: right;
+  height: 200px;
+  width: 400px;
+}

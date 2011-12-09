@@ -5,17 +5,11 @@ require.config({
     "moduleAnnotationsLoader": "core.jquery/jquery.moduleAnnotationsLoader",
     "moduleMediator": "core.jquery/jquery.moduleMediator",
     "jquery": "libs/jQuery/jquery-1.7.1"
-  },
+  }
 });
 
 
-require(["moduleAnnotationsLoader"], function(moduleAnnotationsLoader){
+require(["moduleAnnotationsLoader", "console/logger"], function(moduleAnnotationsLoader, logger){
+  logger.init();
   moduleAnnotationsLoader.execute();
-
-
-  require(["moduleMediator"], function(m){
-    m.subscribe('facebook.like', function(){
-      console.log('liked');
-    });
-  });
 });

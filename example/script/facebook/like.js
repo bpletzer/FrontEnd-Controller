@@ -23,7 +23,7 @@ function removeClass(ele,cls) {
         counter = 0,
         click = function(){
           counter = counter + 1;
-          moduleMediator.publish('facebook.like');
+          moduleMediator.publish('like.facebook');
         };
 
     removeClass(item, 'off');
