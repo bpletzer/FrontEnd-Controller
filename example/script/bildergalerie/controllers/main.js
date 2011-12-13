@@ -1,7 +1,8 @@
-define(["jquery", "bildergalerie/collections/main"], function($, collection){
+define(["jquery", "bildergalerie/collections/main", "moduleAnnotationsLoader"], function($, collection, loader){
   var exports = {};
 
   exports.init = function(elem){
+console.log('bg');
     var collec = collection,
         clicked = elem.clk,
         $img = $('img', elem);
@@ -20,10 +21,15 @@ define(["jquery", "bildergalerie/collections/main"], function($, collection){
     $img.attr('src', collec.current());
 
     $(elem).on('click', function(){
-      $img.attr('src', collec.next());
+      collec.next();
     });
 
-    
+    $(collec).on('update', function(){
+      $img.attr('src', collec.current());
+    });
+
+    $(elem).append('<div data-module="bildergalerie/controllers/navbar"><span class="prev">prev</span> <span class="current">0</span> <span class="next">next</span></div>');
+    loader.execute(elem);
   };
 
   return exports;

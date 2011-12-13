@@ -1,8 +1,9 @@
 define(['jquery'], function ($){
 
   var exports = {};
-  exports.execute = function () {
-    $("[data-module]").each(function () {
+
+  exports.execute = function (context) {
+    $("[data-module]", context).each(function () {
       var item = this,
           $item = $(item),
           module = $item.data("module"),
