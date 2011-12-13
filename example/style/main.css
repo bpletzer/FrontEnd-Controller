@@ -15,3 +15,11 @@
   height: 200px;
   width: 400px;
 }
+
+.plusone.medium{
+  background: url(../images/plusone_medium.png) no-repeat;
+  width:45px;
+  height:30px;
+  margin:0;
+  padding:0;
+}

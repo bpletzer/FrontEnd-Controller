@@ -2,7 +2,7 @@ define(["jquery", "bildergalerie/collections/main", "moduleAnnotationsLoader"], 
   var exports = {};
 
   exports.init = function(elem){
-console.log('bg');
+
     var collec = collection,
         clicked = elem.clk,
         $img = $('img', elem);
