@@ -7,10 +7,28 @@
   <title>FrontEnd Controller Example Integration</title>
 
   <link rel="stylesheet" href="style/main.css">
+  <link rel="stylesheet" href="script/todo/application.css">
 
 </head>
 
 <body>
+<div id="views">
+  <div id="tasks" data-module="todo/TaskApp">
+    <h1>Todos</h1>
+
+    <form>
+      <input type="text" placeholder="What needs to be done?">
+    </form>
+
+    <div class="items"></div>
+
+    <footer>
+      <a class="clear">Clear completed</a>
+      <div class="count"><span class="countVal"></span> left</div>
+    </footer>
+  </div>
+</div>
+
   <div id="container">
 
     <header>
