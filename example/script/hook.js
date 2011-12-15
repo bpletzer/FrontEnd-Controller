@@ -15,7 +15,18 @@ require.config({
 });
 
 
-require(["moduleAnnotationsLoader", "console/logger"], function(moduleAnnotationsLoader, logger){
+require(["moduleAnnotationsLoader",
+		 "moduleMediator", 
+         "console/logger", 
+         "tracking/googleAnalytics",
+         "tracking/omniture"], 
+function(moduleAnnotationsLoader, moduleMediator, logger, googleAnalytics, omniture){
+
+  moduleMediator.subscribe('muh', function(){
+  	  googleAnalytics.track();
+  	  omniture.track();
+  	});
+  	
   logger.init();
   moduleAnnotationsLoader.execute();
 });

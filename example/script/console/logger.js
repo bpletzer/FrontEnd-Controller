@@ -10,6 +10,10 @@ define(["moduleMediator"], function(moduleMediator){
     moduleMediator.subscribe("muh", function(msg){
       console.log('Die Kuh sagt: ' + msg)
     });
+    
+    moduleMediator.subscribe("tracking.reload", function(){
+      console.log('tracking.reload happend')
+    });
 
   };
 
