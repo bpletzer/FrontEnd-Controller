@@ -38,7 +38,7 @@ define(["jquery", "moduleMediator"], function($, moduleMediator){
 
   exports.init = function(elem){
     moduleMediator.publish('muh', 'mäh');
-    $(elem).click(function () {
+    $('button', elem).click(function () {
       $('.dateCount').html(count());
     });
   };
