@@ -26,12 +26,17 @@ define(["jquery", "moduleMediator"], function($, moduleMediator){
         $(this).currentTime = 0;
     }, false);
 
+    // Button verstecken
     $("#dmohl input").slideUp("slow");
+
+    // Bewegung der cat starten
     setInterval(nyan, 450);
   }
 
   nyan = function() {
     nyans += 1;
+
+    // Content mit jedem nyan neu rendern
     $('#dmohl p').html("");
     for (i = 0; i < nyans; i++)
     {
@@ -39,9 +44,10 @@ define(["jquery", "moduleMediator"], function($, moduleMediator){
     }
     $("#dmohl p").append("<h2>Nyan'ed "+nyans+" times.</h2>")
     
+
+    // Katze bewegen falls sie noch nicht ganz auf der rechten seite ist
     var left = $("#nyanCat").css("left");
     var left = left.substring(0, left.length - 2);
-
     
     if (left < $(window).width() - 200) {
       $('#nyanCat').animate({
