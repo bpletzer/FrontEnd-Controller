@@ -4,6 +4,13 @@
   width: 100px;
 }
 
+
+.off .fb-like {
+  background: url(../images/facebook_gefaellt.png) no-repeat;
+  height:20px;
+  width: 75px;
+}
+
 .facebook_like.off.clicked {
   background: url("../script/facebook/images/facebook_like_list_view_animated.gif") no-repeat;
 }
