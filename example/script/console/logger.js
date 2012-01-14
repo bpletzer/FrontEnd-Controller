@@ -15,6 +15,13 @@ define(["moduleMediator"], function(moduleMediator){
       console.log('tracking.reload happend')
     });
 
+    moduleMediator.subscribe("element.manipulation", function(x, y){
+      console.log('Element is now moved to position: { x: ' + x + ' y: ' + y + ' }')
+    });
+
+    moduleMediator.subscribe("window.resized", function(w, h){
+      console.log('Window dimensions changed to: { w: ' + w + ' h: ' + h + ' }')
+    });
   };
 
   return exports;
