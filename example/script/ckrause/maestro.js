@@ -39,13 +39,30 @@ define(["jquery", "moduleMediator"], function($, moduleMediator){
 	  			if ($(el).attr('anim') != 'run') {
 		  			$(el).css({
 		  				'position': 'absolute',
-						'top': offset.y,
-						'left': offset.x
+						'top': offset.top,
+						'left': offset.left
 		  			});
 	  			}
 	  			$(el).attr('anim', 'run'); // mark element as running in animation
-	  			var x = Math.floor(Math.random()*(winW-200));
-	  			var y = Math.floor(Math.random()*(winH-200));
+	  			// smoothness magic
+	  			var x = Math.floor(Math.random()*winW - 200);
+	  			var y = Math.floor(Math.random()*winH - 200);
+	  			if (x < 100) {
+	  				x = 100;
+	  			} else {
+	  				var borderPatrolW = $(el).width();
+	  				var borderPatrolH = $(el).height();
+	  				if (borderPatrolW + x > winW) {
+	  					x = winW - 100 - borderPatrolW;
+	  				}
+	  			}
+	  			if (y < 100) {
+	  				y = 100;
+	  			} else {
+	  				if (borderPatrolH + y > winH) {
+	  					y = winH - 100 - borderPatrolH;
+	  				}
+	  			}
 	  			$(el).animate({
 	  	  			'top': y, // 200px padding on top
 	  	  			'left': x, // and 200px padding on the right
