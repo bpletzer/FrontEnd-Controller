@@ -2,7 +2,7 @@
 * This is the "Beastie Boys" Demo!
 * @author Christian Krause
 */
-define(["jquery", "moduleMediator"], function($, moduleMediator){
+define(["jquery", "moduleMediator", "libs/jQuery/jquery-animate-css-rotate-scale", "libs/jQuery/jquery-css-transform"], function($, moduleMediator){
   	var exports = {};
 	exports.init = function(elem){
 		// beastie stand for fancy
@@ -12,7 +12,7 @@ define(["jquery", "moduleMediator"], function($, moduleMediator){
 			// beastie stands for not dump
 			$(this).unbind();
 			// beastie stands groovy
-			$('#ckrause').append('<audio autoplay="true" src="script/ckrause/maestro.ogg">');
+			$('#ckrause').append('<audio id="ckrause-maestro" autoplay="true" src="script/ckrause/maestro.ogg">');
 
 			// resize listener
 			var winW, winH;
@@ -65,7 +65,8 @@ define(["jquery", "moduleMediator"], function($, moduleMediator){
 	  			}
 	  			$(el).animate({
 	  	  			'top': y, // 200px padding on top
-	  	  			'left': x, // and 200px padding on the right
+	  	  			'left': x, // and 200px padding on the right,
+	  	  			'rotate': '+=360deg'
 	  			}, animSmooth, function(){
 	  				moduleMediator.publish('element.manipulation', x, y);
 	  				anim(element); // recursion alias once-kicked-never-stopped
