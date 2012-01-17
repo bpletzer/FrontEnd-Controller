@@ -1,0 +1,3 @@
+[submodule "example/script/libs/bean"]
+	path = example/script/libs/bean
+	url = https://github.com/fat/bean.git
