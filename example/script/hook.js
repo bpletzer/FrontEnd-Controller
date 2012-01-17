@@ -32,7 +32,7 @@ require(["jquery",
          "ads/ad.core"], 
 function(jquery, moduleAnnotationsLoader, moduleMediator, logger, googleAnalytics, omniture, ads){
   jquery.noConflict();
-debugger
+
   moduleMediator.subscribe('muh', function(){
   	  googleAnalytics.track();
   	  omniture.track();
