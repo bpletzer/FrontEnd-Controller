@@ -37,14 +37,20 @@
     <div id="main" role="main">
       <span>This page shows off, how to integrate the FrontEnd Controller in one's projects.</span>
 
-      <div data-module="facebook/like" class="facebook_like off" onclick="this.className+=' clicked'"></div>
+      <div data-module="social/facebook" class="off">
+        <div class="fb-like off" data-href="http://www.chip.de" data-send="false" data-layout="button_count" data-width="200"></div>
+      </div>
       <div data-module="social/plusone" class="plusone medium"></div>
 
       <div data-module="bildergalerie/controllers/main" data-parameters="one" onclick="this.clk=(this.clk||0)+1;">
         <img src="images/first.jpg" />
       </div>
 
-      <div data-module="social/facebook"></div>
+      <div data-module="social/facebook" class="off">
+        <div class="fb-recommendations" data-site="http://www.chip.de" data-width="300" data-height="300" data-header="true"></div>
+        <div class="fb-activity" data-site="http://www.chip.de" data-app-id="159909617367779" data-action="like" data-width="300" data-height="300"></div>
+      </div>
+
 
       <div data-module="bbieker/crazyshit" class="bbieker_is_crazy">
         <p>This is a completely crazy div!</p>
