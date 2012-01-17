@@ -8,6 +8,8 @@ require.config({
     "moduleMediator": "core.jquery/jquery.moduleMediator",
     "jquery": "libs/jQuery/jquery-1.7.1",
     "jquery.tmpl": "libs/jQuery/jquery.tmpl.wrapper",
+    "jquery.css-transform": "libs/jQuery/jquery-css-transform",
+    "jquery.animate": "libs/jQuery/jquery-animate-css-rotate-scale",
     "spine": "libs/spinejs/spine.wrapper",
     "spine.local": "libs/spinejs/local.wrapper",
     "json2": "libs/json/json2"

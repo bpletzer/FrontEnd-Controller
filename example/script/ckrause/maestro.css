@@ -6,9 +6,9 @@
     text-shadow: #000 1px 1px, #000 2px 2px, #000 3px 3px;
     position: relative;
     -moz-transition: all 0.3s ease-out; /* FF3.7+ */
-       -o-transition: all 0.3s ease-out; /* Opera 10.5 */
-  -webkit-transition: all 0.3s ease-out; /* Saf3.2+, Chrome */
-          transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out; /* Opera 10.5 */
+    -webkit-transition: all 0.3s ease-out; /* Saf3.2+, Chrome */
+    transition: all 0.3s ease-out;
 }
 
 .extruded:hover {
