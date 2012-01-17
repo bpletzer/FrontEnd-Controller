@@ -1,4 +1,4 @@
-define(['jquery'], function($){
+define(['jquery', "moduleMediator"], function($, moduleMediator){
   var exports = {};
 
   exports.init = function(elem){
@@ -11,6 +11,7 @@ define(['jquery'], function($){
       FB.XFBML.parse(element);
 
       $(element).removeClass('off');
+      moduleMediator.publish('loaded.facebook');
     });
 
   };

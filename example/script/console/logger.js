@@ -3,8 +3,8 @@ define(["moduleMediator"], function(moduleMediator){
 
   exports.init = function(elem){
 
-    moduleMediator.subscribe("like.facebook", function(){
-      console.log('event happend: like.facebook')
+    moduleMediator.subscribe("loaded.facebook", function(){
+      console.log('event happend: loaded')
     });
 
     moduleMediator.subscribe("muh", function(msg){

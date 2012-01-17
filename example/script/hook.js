@@ -23,15 +23,16 @@ require.config({
   }
 });
 
-require(["moduleAnnotationsLoader",
-		 "moduleMediator", 
+require(["jquery",
+         "moduleAnnotationsLoader",
+	 "moduleMediator", 
          "console/logger", 
          "tracking/googleAnalytics",
          "tracking/omniture",
-         "ads/ad.core",
-         "jquery"], 
-function(moduleAnnotationsLoader, moduleMediator, logger, googleAnalytics, omniture, ads){
-
+         "ads/ad.core"], 
+function(jquery, moduleAnnotationsLoader, moduleMediator, logger, googleAnalytics, omniture, ads){
+  jquery.noConflict();
+debugger
   moduleMediator.subscribe('muh', function(){
   	  googleAnalytics.track();
   	  omniture.track();
