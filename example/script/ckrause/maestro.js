@@ -66,10 +66,16 @@ define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQu
 	  			$(el).animate({
 	  	  			'top': y, // 200px padding on top
 	  	  			'left': x, // and 200px padding on the right,
-	  	  			'rotate': '+=360deg'
+	  	  			'rotate': '+=360deg',
+	  	  			//'scale': Math.random()
 	  			}, animSmooth, function(){
 	  				moduleMediator.publish('element.manipulation', x, y);
-	  				anim(element); // recursion alias once-kicked-never-stopped
+	  				setTimeout(
+		  				function(){
+		  					anim(element); // recursion alias once-kicked-never-stopped
+		  				},
+		  				1000
+	  				)
 				});
 				// bring user to top of document
 				$('html, body').animate({scrollTop:0}, 'slow');
