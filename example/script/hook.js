@@ -18,18 +18,19 @@ require.config({
     "json2": "libs/json/json2",
     "bean": "libs/bean/bean",
     "amplify.core": "libs/amplify-1.1.0.core.wrapper",
-    "qwery": "libs/qwery-1.0.1.wrapper"
+    "qwery": "libs/qwery-1.0.1.wrapper",
+    "bonzo": "libs/bonzo-1.0.0.wrapper"
   }
 });
-
 
 require(["moduleAnnotationsLoader",
 		 "moduleMediator", 
          "console/logger", 
          "tracking/googleAnalytics",
          "tracking/omniture",
-	"amplify.core"], 
-function(moduleAnnotationsLoader, moduleMediator, logger, googleAnalytics, omniture){
+         "ads/ad.core",
+         "jquery"], 
+function(moduleAnnotationsLoader, moduleMediator, logger, googleAnalytics, omniture, ads){
 
   moduleMediator.subscribe('muh', function(){
   	  googleAnalytics.track();

@@ -78,10 +78,23 @@
     </footer>
   </div>
 
-  <!-- only for testing purposes, to block browser and test percieved rendering -->
+  <!-- only for testing purposes, to block browser and test perc  <script>ieved rendering -->
   <script src="script/sleep.php?random=<?php echo rand(); ?>"></script>
 
   <!-- last element in body, and only script-tag in whole document -->
   <script src="script/libs/require.js/require-1.0.2.js" data-main="script/hook"></script>
+
+  <!-- what happens when advertisement loads some time via doc write, but does need some way to enter the hook -->
+  <script>
+    document.write('<script src="script/sleep.php?random=<?php echo rand(); ?>"><'+'/script>');
+  </script> 
+  <script>
+    window.adQueue = window.adQueue || [];
+    window.adQueue.push(function(){
+      require(["qwery", "bonzo"], function(qwery, bonzo){
+        bonzo(qwery('body')).css('background-color', 'lightblue');
+      });
+    });
+  </script>
 </body>
 </html>
