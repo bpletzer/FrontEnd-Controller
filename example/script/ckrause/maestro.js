@@ -2,7 +2,7 @@
 * This is the "Beastie Boys" Demo!
 * @author Christian Krause
 */
-define(["jquery", "moduleMediator", "libs/jQuery/jquery-animate-css-rotate-scale", "libs/jQuery/jquery-css-transform"], function($, moduleMediator){
+define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQuery/jquery-css-transform.wrapper"], function($, moduleMediator){
   	var exports = {};
 	exports.init = function(elem){
 		// beastie stand for fancy
