@@ -31,7 +31,7 @@ require(["jquery",
          "tracking/omniture",
          "ads/ad.core"], 
 function(jquery, moduleAnnotationsLoader, moduleMediator, logger, googleAnalytics, omniture, ads){
-  jquery.noConflict();
+  jquery.noConflict();	
 
   moduleMediator.subscribe('muh', function(){
   	  googleAnalytics.track();
