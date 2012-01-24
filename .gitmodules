@@ -1,3 +1,6 @@
 [submodule "example/script/libs/bean"]
 	path = example/script/libs/bean
 	url = https://github.com/fat/bean.git
+[submodule "example/script/libs/history.js"]
+	path = example/script/libs/history.js
+	url = https://github.com/balupton/history.js.git

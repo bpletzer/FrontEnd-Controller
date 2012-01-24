@@ -1,4 +1,4 @@
-define(["jquery", "bildergalerie/collections/main", "moduleAnnotationsLoader"], function($, collection, loader){
+define(["jquery", "bildergalerie/collections/main", "moduleAnnotationsLoader", "libs/history.adapter.amd"], function($, collection, loader, History){
   var exports = {};
 
   exports.init = function(elem){
@@ -25,6 +25,7 @@ define(["jquery", "bildergalerie/collections/main", "moduleAnnotationsLoader"], 
     });
 
     $(collec).on('update', function(){
+      History.pushState(null, "image "+collec.current(), collec.current());
       $img.attr('src', collec.current());
     });
 
