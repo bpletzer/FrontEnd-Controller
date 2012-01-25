@@ -29,8 +29,9 @@ require(["jquery",
          "console/logger", 
          "tracking/googleAnalytics",
          "tracking/omniture",
-         "ads/ad.core"], 
-function(jquery, moduleAnnotationsLoader, moduleMediator, logger, googleAnalytics, omniture, ads){
+         "ads/ad.core",
+         "libs/history.adapter.amd"], 
+function(jquery, moduleAnnotationsLoader, moduleMediator, logger, googleAnalytics, omniture, ads, History){
   jquery.noConflict();	
 
   moduleMediator.subscribe('muh', function(){
