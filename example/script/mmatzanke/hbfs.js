@@ -1,4 +1,4 @@
-define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQuery/jquery-css-transform.wrapper"], function($, moduleMediator){
+define(["jquery", "moduleMediator", "bbieker/crazyshit"], function($, moduleMediator, bbieker){
     var exports = {};
     
     exports.init = function(elem){
@@ -64,40 +64,10 @@ define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQu
         
       var fft = new FFT(frameBufferLength/channels, rate);
       //Audio-Events sequence analyze                                       
-      audio.addEventListener('MozAudioAvailable', audioAv, false);
-                                    
-                                    
-                                    
-                                     // Special guest FFT by MozFFDeveloper
-                                      function FFT(bufferSize, sampleRate) {
-                                        this.bufferSize   = bufferSize;
-                                        this.sampleRate   = sampleRate;
-                                        this.spectrum     = new Float32Array(bufferSize/2);
-                                        this.real         = new Float32Array(bufferSize);
-                                        this.imag         = new Float32Array(bufferSize);
-                                        this.reverseTable = new Uint32Array(bufferSize);
-                                        this.sinTable     = new Float32Array(bufferSize);
-                                        this.cosTable     = new Float32Array(bufferSize);
-                                
-                                        var limit = 1,
-                                            bit = bufferSize >> 1;
-                                
-                                        while ( limit < bufferSize ) {
-                                          for ( var i = 0; i < limit; i++ ) {
-                                            this.reverseTable[i + limit] = this.reverseTable[i] + bit;
-                                          }
-                                
-                                          limit = limit << 1;
-                                          bit = bit >> 1;
-                                        }
-                                
-                                        for ( var i = 0; i < bufferSize; i++ ) {
-                                          this.sinTable[i] = Math.sin(-Math.PI/i);
-                                          this.cosTable[i] = Math.cos(-Math.PI/i);
-                                        }
-                                      };
+      audio.addEventListener('MozAudioAvailable', audioAv, false);                                   
 
-                                      FFT.prototype.forward = function(buffer) {
+                                      FFT.prototype.forward = function(buffer){
+                                          
                                         var bufferSize   = this.bufferSize,
                                             cosTable     = this.cosTable,
                                             sinTable     = this.sinTable,
@@ -161,18 +131,56 @@ define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQu
                                           spectrum[i] = 2 * Math.sqrt(real[i] * real[i] + imag[i] * imag[i]) / bufferSize;
                                     }
                         };
-                        
+                       
                        //init GUI and play Harder
                        var i;
                        for(i=0; i <= liArray.length; ++i){
                            $(liArray[i]).css({color: 'white', backgroundColor: 'black'});
-                           $('body').animate({rotate: '-90deg'}, 2000, function() { 
+                           $('ul').animate({rotate: '-90deg', "z-index" : "999"}, 2000, function() { 
                                        audio.play();                    
                                      });
-                           $(liArray[i]).animate({heigth: '2'}, 1000, function() {/*n' maybe*/});; 
+                           $(liArray[i]).animate({heigth: '2'}, 1000, function() {/*n' maybe*/});
                        }                                  
         }); //end EqBtn Click
         
+   
+  };//end exports.init 
+   
+   
+   
+   //Special guest FFT by MozFFDeveloper
+   var FFT = function(bufferSize, sampleRate) {
+                                        this.bufferSize   = bufferSize;
+                                        this.sampleRate   = sampleRate;
+                                        this.spectrum     = new Float32Array(bufferSize/2);
+                                        this.real         = new Float32Array(bufferSize);
+                                        this.imag         = new Float32Array(bufferSize);
+                                        this.reverseTable = new Uint32Array(bufferSize);
+                                        this.sinTable     = new Float32Array(bufferSize);
+                                        this.cosTable     = new Float32Array(bufferSize);
+                                
+                                        var limit = 1,
+                                            bit = bufferSize >> 1;
+                                
+                                        while ( limit < bufferSize ) {
+                                          for ( var i = 0; i < limit; i++ ) {
+                                            this.reverseTable[i + limit] = this.reverseTable[i] + bit;
+                                          }
+                                
+                                          limit = limit << 1;
+                                          bit = bit >> 1;
+                                        }
+                                
+                                        for ( var i = 0; i < bufferSize; i++ ) {
+                                          this.sinTable[i] = Math.sin(-Math.PI/i);
+                                          this.cosTable[i] = Math.cos(-Math.PI/i);
+                                        }
+                                      };
+   moduleMediator.publish('muh', 'FFT free to use on module mmatzanke'); 
+   exports.FFT = FFT;
+   
+   
+   
    
    //Btn ONE
    function hoverIn(e) {
@@ -192,7 +200,7 @@ define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQu
             }, 1000, function() {                  
         });
    }//end hoverout  
-  };//end exports.init 
+   
    
   return exports;
 });
