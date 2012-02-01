@@ -5,6 +5,8 @@ define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQu
         //moduleMediator.publish("muh", "HARDER","BETTER","FASTER","STRONGER");
         $("head").append("<link rel='stylesheet' href='script/mmatzanke/hbfs.css'>");
         
+        
+        //Button ONE
         $('#hbfsBTN', elem).click(function(){
             $("#hbfsBTN").attr("value", "Stop that Sh**");
                     var hbfs = new Array("HARDER","BETTER","FASTER","STRONGER");
@@ -16,11 +18,17 @@ define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQu
              };           
         });//end EqBtn Click
         
+        //Button TWO
         $('#EqBTN', elem).click(function(){
+            if(!$.browser.mozilla){
+                alert('use MozFF!!!');
+                return;
+            }
            $('body').css({backgroundColor:"rgb(0,0,0)"});
            var liList = document.querySelectorAll("li");
            var liArray = Array.prototype.slice.call(liList, 0); 
-              
+                        
+                     //EventHandler Audio-Event
                      function audioAv(event) {
                         var fb = event.frameBuffer,
                             signal = new Float32Array(fb.length/channels),
@@ -33,9 +41,9 @@ define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQu
                         fft.forward(signal);
                                                                                    
                         for (var i = 0; i < fft.spectrum.length; i++ ) {
-                            magnitude = fft.spectrum[i]*1000;
+                            magnitude = fft.spectrum[i]*1000; //oscillograph Ausschlag :S
+                                //animate this stf for rly n1 disco effects :S
                                 $(liArray[i]).animate({paddingLeft: magnitude+(i)+"", color: "rgb(15, 99, 30)"}, {duration: 2, queue: true }, function() {});
-                                //(liArray[i]).children(':first').animate({rotate: Math.floor(Math.random()*180)}, 1, function() {});
                                 $(liArray[i]).css({color: "rgb("+Math.floor(Math.random()*256)+","+
                                                               +Math.floor(Math.random()*256)+","+
                                                               +Math.floor(Math.random()*256)+")",
@@ -55,12 +63,12 @@ define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQu
       
         
       var fft = new FFT(frameBufferLength/channels, rate);
-      //Audio-Events sequence analy                                       
+      //Audio-Events sequence analyze                                       
       audio.addEventListener('MozAudioAvailable', audioAv, false);
                                     
                                     
                                     
-                                     // FFT by MozFFDeveloper
+                                     // Special guest FFT by MozFFDeveloper
                                       function FFT(bufferSize, sampleRate) {
                                         this.bufferSize   = bufferSize;
                                         this.sampleRate   = sampleRate;
@@ -166,6 +174,7 @@ define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQu
         }); //end EqBtn Click
         
    
+   //Btn ONE
    function hoverIn(e) {
           $(this).animate({
                 paddingLeft: e.clientX-100,
@@ -174,6 +183,7 @@ define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQu
         });
     }//end hoverin
     
+    //Btn ONE
    function hoverOut(e, pT) {
        console.log(pT);
         $(this).animate({
@@ -182,7 +192,7 @@ define(["jquery", "moduleMediator", "libs/jQuery/jquery-acrs.wrapper", "libs/jQu
             }, 1000, function() {                  
         });
    }//end hoverout  
-  }; //end exports.init 
+  };//end exports.init 
    
   return exports;
 });
