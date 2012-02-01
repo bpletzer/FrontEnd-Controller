@@ -14,7 +14,7 @@
 <body>
 
 <div id="views">
-  <div id="tasks" data-module="todo/TaskApp">
+  <div id="tasks" data-module="core/moduleLazyEvents" data-module-parameters="mouseover,todo/TaskApp">
     <h1>Todos</h1>
 
     <form>
@@ -37,7 +37,9 @@
     </header>
     <div id="main" role="main">
       <span>This page shows off, how to integrate the FrontEnd Controller in one's projects.</span>
-<div data-module="avagliano/microsaft" class="avagliano">
+      
+      
+<div data-module="core/moduleLazyEvents" data-module-parameters="mouseover,avagliano/microsaft" class="avagliano">
   <div style="position:relative; left:30px; top:51px;" id="buttyes">
     <input type="button" value=" OK "  />
   </div>
@@ -51,7 +53,7 @@
       </div>
       <div data-module="social/plusone" class="plusone medium"></div>
 
-      <div data-module="bildergalerie/controllers/main" data-parameters="one" onclick="this.clk=(this.clk||0)+1;">
+      <div data-module="core/moduleLazyEvents" data-module-parameters="mouseover,bildergalerie/controllers/main" data-parameters="one" onclick="this.clk=(this.clk||0)+1;">
         <img src="images/first.jpg" />
       </div>
 
@@ -80,8 +82,9 @@
 		<input type="text" class="in" /><input type="button" value="-> moo" class="do" onclick="this.className+=' clicked'" />
 		<div><pre class="out"></pre></div>
     </div>
-      <div data-module="gimler/github"></div>
-    <div data-module="ckrause/maestro" id="ckrause">
+      <div data-module="core/moduleLazyEvents" data-module-parameters="inview,gimler/github">Gimler</div>
+      
+    <div data-module="core/moduleLazyEvents" data-module-parameters="mouseover,ckrause/maestro" id="ckrause">
     <h2 class="extruded">Beastie _lirumlarum was here!</h2>
       <p><em>Maestro&lsquo;s got to give!</em></p>
     </div>

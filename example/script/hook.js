@@ -8,6 +8,7 @@ require.config({
     "moduleAnnotationsLoader": "core.micro/qwery.moduleAnnotationsLoader",
 //    "moduleMediator": "core.jquery/jquery.moduleMediator",
     "moduleMediator": "core.micro/amplify.moduleMediator",
+    "core/moduleLazyEvents": "core.jquery/jquery.moduleLazyEvents",
 
     "jquery": "libs/jQuery/jquery-1.7.1",
     "jquery.tmpl": "libs/jQuery/jquery.tmpl.wrapper",

@@ -11,10 +11,13 @@ define(["qwery"], function (qwery){
       (function(i){
         var item = nodeArray[i],
             module = item.getAttribute('data-module'),
-            parameters = item.getAttribute('data-module-parameters');
+            parameters = item.getAttribute('data-module-parameters') || '';
+            
+        parameters = parameters.split(',');
+        parameters.unshift(item);
 
         require([module], function (mod) {
-          mod.init(item, parameters);
+          mod.init.apply(mod, parameters);
         });
       }(i));
     }
