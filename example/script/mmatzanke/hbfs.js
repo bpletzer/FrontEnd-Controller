@@ -1,4 +1,4 @@
-define(["jquery", "moduleMediator", "bbieker/crazyshit"], function($, moduleMediator, bbieker){
+define(["jquery", "moduleMediator", "mmatzanke/rechenschieber"], function($, moduleMediator, rechenschieber){
     var exports = {};
     
     exports.init = function(elem){
@@ -43,7 +43,7 @@ define(["jquery", "moduleMediator", "bbieker/crazyshit"], function($, moduleMedi
                         for (var i = 0; i < fft.spectrum.length; i++ ) {
                             magnitude = fft.spectrum[i]*1000; //oscillograph Ausschlag :S
                                 //animate this stf for rly n1 disco effects :S
-                                $(liArray[i]).animate({paddingLeft: magnitude+(i)+"", color: "rgb(15, 99, 30)"}, {duration: 2, queue: true }, function() {});
+                                $(liArray[i]).animate({paddingLeft: magnitude+(i)+"", color: "rgb(15, 99, 30)"}, {duration: 2, queue: false, complete: function(){}});
                                 $(liArray[i]).css({color: "rgb("+Math.floor(Math.random()*256)+","+
                                                               +Math.floor(Math.random()*256)+","+
                                                               +Math.floor(Math.random()*256)+")",
@@ -53,7 +53,6 @@ define(["jquery", "moduleMediator", "bbieker/crazyshit"], function($, moduleMedi
                                                               );           
                         }
                       }//End audioAvailable
-        
       //get HTML 5 audio
       var audio = document.getElementById('acMM');
       //get init-params of the audio      
@@ -61,12 +60,12 @@ define(["jquery", "moduleMediator", "bbieker/crazyshit"], function($, moduleMedi
       var rate              = audio.mozSampleRate;
       var frameBufferLength = audio.mozFrameBufferLength;
       
-        
-      var fft = new FFT(frameBufferLength/channels, rate);
+      
+      var fft = new rechenschieber.FFT(frameBufferLength/channels, rate);
       //Audio-Events sequence analyze                                       
       audio.addEventListener('MozAudioAvailable', audioAv, false);                                   
-
-                                      FFT.prototype.forward = function(buffer){
+    
+                                      rechenschieber.FFT.prototype.forward = function(buffer){
                                           
                                         var bufferSize   = this.bufferSize,
                                             cosTable     = this.cosTable,
@@ -136,9 +135,9 @@ define(["jquery", "moduleMediator", "bbieker/crazyshit"], function($, moduleMedi
                        var i;
                        for(i=0; i <= liArray.length; ++i){
                            $(liArray[i]).css({color: 'white', backgroundColor: 'black'});
-                           $('ul').animate({rotate: '-90deg', "z-index" : "999"}, 2000, function() { 
+                           $('ul').animate({rotate: '-90deg', "z-index" : "999"},{queue: false, duration: 2000, complete:function() { 
                                        audio.play();                    
-                                     });
+                                     }});
                            $(liArray[i]).animate({heigth: '2'}, 1000, function() {/*n' maybe*/});
                        }                                  
         }); //end EqBtn Click
@@ -149,7 +148,7 @@ define(["jquery", "moduleMediator", "bbieker/crazyshit"], function($, moduleMedi
    
    
    //Special guest FFT by MozFFDeveloper
-   var FFT = function(bufferSize, sampleRate) {
+   /*var FFT = function(bufferSize, sampleRate) {
                                         this.bufferSize   = bufferSize;
                                         this.sampleRate   = sampleRate;
                                         this.spectrum     = new Float32Array(bufferSize/2);
@@ -175,13 +174,8 @@ define(["jquery", "moduleMediator", "bbieker/crazyshit"], function($, moduleMedi
                                           this.sinTable[i] = Math.sin(-Math.PI/i);
                                           this.cosTable[i] = Math.cos(-Math.PI/i);
                                         }
-                                      };
-   moduleMediator.publish('muh', 'FFT free to use on module mmatzanke'); 
-   exports.FFT = FFT;
-   
-   
-   
-   
+                                      };*/
+
    //Btn ONE
    function hoverIn(e) {
           $(this).animate({
