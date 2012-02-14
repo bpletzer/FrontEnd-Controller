@@ -5,25 +5,57 @@ define(["jquery", "moduleMediator", "mmatzanke/rechenschieber"], function($, mod
         //moduleMediator.publish("muh", "HARDER","BETTER","FASTER","STRONGER");
         $("head").append("<link rel='stylesheet' href='script/mmatzanke/hbfs.css'>");
         
-        
+        var clicked = false;
+        var hbfsBTN = $("#hbfsBTN").attr("value");
+        var eqBTN = $("#EqBTN").attr("value");
+        var stopText = "Stop that Sh**"; 
+        var divList = document.querySelectorAll("div");
+        var i;
+        var divArray = Array.prototype.slice.call(divList, 0);
         //Button ONE
         $('#hbfsBTN', elem).click(function(){
-            $("#hbfsBTN").attr("value", "Stop that Sh**");
-                    var hbfs = new Array("HARDER","BETTER","FASTER","STRONGER");
-                    var divList = document.querySelectorAll("div");
-                    var i;
-                    var divArray = Array.prototype.slice.call(divList, 0);
-                        for (i=3 ; i < divArray.length; ++i) { //TODO-Liste :S
-                               $(divArray[i]).hover(hoverIn, hoverOut);
-             };           
+            if(clicked == false){
+                          clicked = true;
+                          $("#EqBTN").attr("disabled", true);
+                          $("#hbfsBTN").attr("value", stopText);
+                                var hbfs = new Array("HARDER","BETTER","FASTER","STRONGER");
+                                
+                                    for (i=3 ; i < divArray.length; ++i) { //TODO-Liste :S
+                                           $(divArray[i]).hover(hoverIn, hoverOut);
+                         };
+            } 
+            else{
+                clicked = false;
+                    $("#EqBTN").attr("disabled", false);
+                    $("#hbfsBTN").attr("value", hbfsBTN);
+                         for (i=3 ; i < divArray.length; ++i) { //TODO-Liste :S
+                             $(divArray[i]).css({paddingLeft : "", opacity: ""}); 
+                             $(divArray[i]).off();                                           
+                   };
+            }
+                  
         });//end EqBtn Click
+        
+        
         
         //Button TWO
         $('#EqBTN', elem).click(function(){
-            if(!$.browser.mozilla){
+             if(!$.browser.mozilla){
                 alert('use MozFF!!!');
                 return;
-            }
+              }
+           
+           
+           if(clicked == false){
+                   clicked = true;
+                  
+                  
+           //create List
+           
+           $("#hbfsBTN").attr("disabled", true);
+           
+           $("#EqBTN").attr("value", stopText);           
+           
            $('body').css({backgroundColor:"rgb(0,0,0)"});
            var liList = document.querySelectorAll("li");
            var liArray = Array.prototype.slice.call(liList, 0); 
@@ -53,6 +85,7 @@ define(["jquery", "moduleMediator", "mmatzanke/rechenschieber"], function($, mod
                                                               );           
                         }
                       }//End audioAvailable
+
       //get HTML 5 audio
       var audio = document.getElementById('acMM');
       //get init-params of the audio      
@@ -138,44 +171,28 @@ define(["jquery", "moduleMediator", "mmatzanke/rechenschieber"], function($, mod
                            $('ul').animate({rotate: '-90deg', "z-index" : "999"},{queue: false, duration: 2000, complete:function() { 
                                        audio.play();                    
                                      }});
-                           $(liArray[i]).animate({heigth: '2'}, 1000, function() {/*n' maybe*/});
-                       }                                  
+                           //$(liArray[i]).animate({heigth: '2'}, 1000, function() {/*n' maybe*/});
+                       }          
+             }else{
+                 clicked = false;
+                 $("#hbfsBTN").attr("disabled", false);
+                 $("#EqBTN").attr("value", eqBTN);
+                     for(i=0; i <= liArray.length; ++i){
+                           $(liArray[i]).css({color: "", backgroundColor: "", rotate: ""});
+                           $('ul').animate({rotate: "", "z-index" : ""},{queue: false, duration: 2000, complete:function() { 
+                                       audio.stop();                    
+                                     }});
+                          }
+             }      
         }); //end EqBtn Click
+        
+       
         
    
   };//end exports.init 
    
    
    
-   //Special guest FFT by MozFFDeveloper
-   /*var FFT = function(bufferSize, sampleRate) {
-                                        this.bufferSize   = bufferSize;
-                                        this.sampleRate   = sampleRate;
-                                        this.spectrum     = new Float32Array(bufferSize/2);
-                                        this.real         = new Float32Array(bufferSize);
-                                        this.imag         = new Float32Array(bufferSize);
-                                        this.reverseTable = new Uint32Array(bufferSize);
-                                        this.sinTable     = new Float32Array(bufferSize);
-                                        this.cosTable     = new Float32Array(bufferSize);
-                                
-                                        var limit = 1,
-                                            bit = bufferSize >> 1;
-                                
-                                        while ( limit < bufferSize ) {
-                                          for ( var i = 0; i < limit; i++ ) {
-                                            this.reverseTable[i + limit] = this.reverseTable[i] + bit;
-                                          }
-                                
-                                          limit = limit << 1;
-                                          bit = bit >> 1;
-                                        }
-                                
-                                        for ( var i = 0; i < bufferSize; i++ ) {
-                                          this.sinTable[i] = Math.sin(-Math.PI/i);
-                                          this.cosTable[i] = Math.cos(-Math.PI/i);
-                                        }
-                                      };*/
-
    //Btn ONE
    function hoverIn(e) {
           $(this).animate({
@@ -194,7 +211,5 @@ define(["jquery", "moduleMediator", "mmatzanke/rechenschieber"], function($, mod
             }, 1000, function() {                  
         });
    }//end hoverout  
-   
-   
   return exports;
 });
