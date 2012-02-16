@@ -45,20 +45,21 @@ define(["jquery", "moduleMediator", "mmatzanke/rechenschieber"], function($, mod
                 return;
               }
            
+           //get HTML 5 audio
+            var audio = document.getElementById('acMM');
+            //create List
+            var liList = document.querySelectorAll("li");
+            var liArray = Array.prototype.slice.call(liList, 0); 
            
+      
            if(clicked == false){
                    clicked = true;
-                  
-                  
-           //create List
-           
+    
            $("#hbfsBTN").attr("disabled", true);
            
            $("#EqBTN").attr("value", stopText);           
            
            $('body').css({backgroundColor:"rgb(0,0,0)"});
-           var liList = document.querySelectorAll("li");
-           var liArray = Array.prototype.slice.call(liList, 0); 
                         
                      //EventHandler Audio-Event
                      function audioAv(event) {
@@ -86,8 +87,6 @@ define(["jquery", "moduleMediator", "mmatzanke/rechenschieber"], function($, mod
                         }
                       }//End audioAvailable
 
-      //get HTML 5 audio
-      var audio = document.getElementById('acMM');
       //get init-params of the audio      
       var channels          = audio.mozChannels;
       var rate              = audio.mozSampleRate;
@@ -98,7 +97,7 @@ define(["jquery", "moduleMediator", "mmatzanke/rechenschieber"], function($, mod
       //Audio-Events sequence analyze                                       
       audio.addEventListener('MozAudioAvailable', audioAv, false);                                   
     
-                                      rechenschieber.FFT.prototype.forward = function(buffer){
+       rechenschieber.FFT.prototype.forward = function(buffer){
                                           
                                         var bufferSize   = this.bufferSize,
                                             cosTable     = this.cosTable,
@@ -162,28 +161,30 @@ define(["jquery", "moduleMediator", "mmatzanke/rechenschieber"], function($, mod
                                         while(i--) {
                                           spectrum[i] = 2 * Math.sqrt(real[i] * real[i] + imag[i] * imag[i]) / bufferSize;
                                     }
-                        };
+                };
                        
                        //init GUI and play Harder
-                       var i;
-                       for(i=0; i <= liArray.length; ++i){
-                           $(liArray[i]).css({color: 'white', backgroundColor: 'black'});
-                           $('ul').animate({rotate: '-90deg', "z-index" : "999"},{queue: false, duration: 2000, complete:function() { 
+                       $("#EqBTN").animate({marginTop: '80'});
+                       $('ul').animate({rotate: '-90deg', "z-index" : "998"},{queue: false, duration: 2000, complete:function() { 
                                        audio.play();                    
                                      }});
                            //$(liArray[i]).animate({heigth: '2'}, 1000, function() {/*n' maybe*/});
-                       }          
+                                 
              }else{
                  clicked = false;
+                 $('body').css({backgroundColor:""});
                  $("#hbfsBTN").attr("disabled", false);
                  $("#EqBTN").attr("value", eqBTN);
-                     for(i=0; i <= liArray.length; ++i){
-                           $(liArray[i]).css({color: "", backgroundColor: "", rotate: ""});
-                           $('ul').animate({rotate: "", "z-index" : ""},{queue: false, duration: 2000, complete:function() { 
-                                       audio.stop();                    
-                                     }});
-                          }
-             }      
+                    
+                        
+                         
+                  $("#EqBTN").animate({marginTop : ""});
+                  $("ul").animate({rotate: "0deg", "z-index" : ""},{queue: false, duration: 2000, complete:function() { 
+                                         audio.pause();            
+                                     }
+                        }
+                      );
+                  }      
         }); //end EqBtn Click
         
        
