@@ -1,122 +1,118 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>FrontEnd Controller Example Integration</title>
+		<link rel="stylesheet" href="style/main.css">
+		<link rel="stylesheet" href="script/todo/application.css">
+	</head>
+	<body>
+		<div id="views">
+			<div id="tasks" data-module="core/moduleLazyEvents" data-module-parameters="mouseover,todo/TaskApp">
+				<h1>Todos</h1>
+				<form>
+					<input type="text" placeholder="What needs to be done?">
+				</form>
+				<div class="items"></div>
+				<footer>
+					<a class="clear">Clear completed</a>
+					<div class="count">
+						<span class="countVal"></span> left
+					</div>
+				</footer>
+			</div>
+		</div>
+		<div id="container">
+			<header>
+				<h1>FrontEnd Controller Example Integration</h1>
+			</header>
+			<div id="main" role="main">
+				<span>This page shows off, how to integrate the FrontEnd Controller in one's projects.</span>
+				<div data-module="core/moduleLazyEvents" data-module-parameters="mouseover,avagliano/microsaft" class="avagliano">
+					<div style="position:relative; left:30px; top:51px;" id="buttyes">
+						<input type="button" value=" OK "  />
+					</div>
+					<div style="position:relative; width:100px; left:90px; top:0px; padding:20px;" id="buttno">
+						<input type="button" value="  Nein  "  />
+					</div>
+				</div>
+				<div data-module="social/facebook" class="off">
+					<div class="fb-like off" data-href="http://www.chip.de" data-send="false" data-layout="button_count" data-width="200"></div>
+				</div>
+				<div data-module="social/plusone" class="plusone medium"></div>
+				<div data-module="core/moduleLazyEvents" data-module-parameters="mouseover,bildergalerie/controllers/main" data-parameters="one" onclick="this.clk=(this.clk||0)+1;">
+					<img src="images/first.jpg" />
+				</div>
+				<div data-module="social/facebook" class="off">
+					<div class="fb-recommendations" data-site="http://www.chip.de" data-width="300" data-height="300" data-header="true"></div>
+					<div class="fb-activity" data-site="http://www.chip.de" data-app-id="159909617367779" data-action="like" data-width="300" data-height="300"></div>
+				</div>
+				<div data-module="bbieker/crazyshit" class="bbieker_is_crazy">
+					<p>
+						This is a completely crazy div!
+					</p>
+				</div>
+				<div data-module="abullin/foobarbaz" class="abullin">
+					<button value="drück mich">
+						Drueck mich!
+					</button>
+					<p class="dateCount"></p>
+				</div>
+				<div data-module="dmohl/nyan" class="dmohl" id="dmohl">
+					<p>
+						<input type="button" value="Drück mich, ich bin cooler!" />
+					</p>
+				</div>
+				<div data-module="dmohl/rightround" class="dmohl" id="dmohl-rightround">
+					<p>
+						<input type="button" value="You spin me right round baby right round!" />
+					</p>
+				</div>
+				<div data-module="aguenther/muhkuh">
+					<input type="text" class="in" />
+					<input type="button" value="-> moo" class="do" onclick="this.className+=' clicked'" />
+					<div>
+						<pre class="out"></pre>
+</div>				</div>
+				<div data-module="gimler/github">
+					Gimler
+				</div>
+				<div data-module="core/moduleLazyEvents" data-module-parameters="mouseover,ckrause/maestro" id="ckrause">
+					<h2 class="extruded">Beastie _lirumlarum was here!</h2>
+					<p>
+						<em>Maestro&lsquo;s got to give!</em>
+					</p>
+				</div>
+				<div data-module="mmatzanke/hbfs" id="mmatzanke" >
+					<p>
+						<input type="button" id="hbfsBTN" value="Mouse over divs test"/>
+						<input type="button" id="EqBTN" value="GIT-List as sound visualizer (MozFF only)"/>
+						<br />
+						<audio id="acMM" src="script/mmatzanke/HBFS.ogg"></audio>
+					</p>
+				</div>
+				<footer>
+					last content here
+				</footer>
+			</div>
+			<!-- only for testing purposes, to block browser and test perc  <script>ieved rendering -->
+			<script src="script/sleep.php?random=<?php echo rand(); ?>"></script>
+			<!-- last element in body, and only script-tag in whole document -->
+			<script src="script/libs/require.js/require-1.0.2.js" data-main="script/hook"></script>
+			<!-- what happens when advertisement loads some time via doc write, but does need some way to enter the hook -->
+			<script>
+                document.write('<script src="script/sleep.php?random=<?php echo rand(); ?>"><' + '/script>');
 
-  <title>FrontEnd Controller Example Integration</title>
+			</script>
+			<script>
+                window.adQueue = window.adQueue || [];
+                window.adQueue.push(function() {
+                    require(["qwery", "bonzo"], function(qwery, bonzo) {
+                        bonzo(qwery('body')).css('background-color', 'lightblue');
+                    });
+                });
 
-  <link rel="stylesheet" href="style/main.css">
-  <link rel="stylesheet" href="script/todo/application.css">
-
-</head>
-
-<body>
-
-<div id="views">
-  <div id="tasks" data-module="core/moduleLazyEvents" data-module-parameters="mouseover,todo/TaskApp">
-    <h1>Todos</h1>
-
-    <form>
-      <input type="text" placeholder="What needs to be done?">
-    </form>
-
-    <div class="items"></div>
-
-    <footer>
-      <a class="clear">Clear completed</a>
-      <div class="count"><span class="countVal"></span> left</div>
-    </footer>
-  </div>
-</div>
-
-  <div id="container">
-
-    <header>
-      <h1>FrontEnd Controller Example Integration</h1>
-    </header>
-    <div id="main" role="main">
-      <span>This page shows off, how to integrate the FrontEnd Controller in one's projects.</span>
-      
-      
-<div data-module="core/moduleLazyEvents" data-module-parameters="mouseover,avagliano/microsaft" class="avagliano">
-  <div style="position:relative; left:30px; top:51px;" id="buttyes">
-    <input type="button" value=" OK "  />
-  </div>
-  <div style="position:relative; width:100px; left:90px; top:0px; padding:20px;" id="buttno">
-    <input type="button" value="  Nein  "  />
-  </div>
-</div>
-
-      <div data-module="social/facebook" class="off">
-        <div class="fb-like off" data-href="http://www.chip.de" data-send="false" data-layout="button_count" data-width="200"></div>
-      </div>
-      <div data-module="social/plusone" class="plusone medium"></div>
-
-      <div data-module="core/moduleLazyEvents" data-module-parameters="mouseover,bildergalerie/controllers/main" data-parameters="one" onclick="this.clk=(this.clk||0)+1;">
-        <img src="images/first.jpg" />
-      </div>
-
-      <div data-module="social/facebook" class="off">
-        <div class="fb-recommendations" data-site="http://www.chip.de" data-width="300" data-height="300" data-header="true"></div>
-        <div class="fb-activity" data-site="http://www.chip.de" data-app-id="159909617367779" data-action="like" data-width="300" data-height="300"></div>
-      </div>
-
-
-      <div data-module="bbieker/crazyshit" class="bbieker_is_crazy">
-        <p>This is a completely crazy div!</p>
-      </div>
-
-      <div data-module="abullin/foobarbaz" class="abullin">
-        <button value="drück mich">Drueck mich!</button>
-	<p class="dateCount"></p>
-      </div>
-      <div data-module="dmohl/nyan" class="dmohl" id="dmohl">
-        <p><input type="button" value="Drück mich, ich bin cooler!" /></p>
-      </div>
-      <div data-module="dmohl/rightround" class="dmohl" id="dmohl-rightround">
-        <p><input type="button" value="You spin me right round baby right round!" /></p>
-      </div>
-
-	<div data-module="aguenther/muhkuh">
-		<input type="text" class="in" /><input type="button" value="-> moo" class="do" onclick="this.className+=' clicked'" />
-		<div><pre class="out"></pre></div>
-    </div>
-    <div data-module="gimler/github">Gimler</div>
-      
-    <div data-module="core/moduleLazyEvents" data-module-parameters="mouseover,ckrause/maestro" id="ckrause">
-    <h2 class="extruded">Beastie _lirumlarum was here!</h2>
-      <p><em>Maestro&lsquo;s got to give!</em></p>
-    </div>
-    
-    <div data-module="mmatzanke/hbfs" id="mmatzanke" >
-    	<p><input type="button" id="hbfsBTN" value="Mouse over divs test"/>
-    	<input type="button" id="EqBTN" value="GIT-List as sound visualizer (MozFF only)"/><br />
-    		<audio id="acMM" src="script/mmatzanke/HBFS.ogg"></audio>
-    	</p>
-    </div>
-    <footer>
-      last content here
-    </footer>
-  </div>
-
-  <!-- only for testing purposes, to block browser and test perc  <script>ieved rendering -->
-  <script src="script/sleep.php?random=<?php echo rand(); ?>"></script>
-
-  <!-- last element in body, and only script-tag in whole document -->
-  <script src="script/libs/require.js/require-1.0.2.js" data-main="script/hook"></script>
-
-  <!-- what happens when advertisement loads some time via doc write, but does need some way to enter the hook -->
-  <script>
-    document.write('<script src="script/sleep.php?random=<?php echo rand(); ?>"><'+'/script>');
-  </script> 
-  <script>
-    window.adQueue = window.adQueue || [];
-    window.adQueue.push(function(){
-      require(["qwery", "bonzo"], function(qwery, bonzo){
-        bonzo(qwery('body')).css('background-color', 'lightblue');
-      });
-    });
-  </script>
-</body>
+			</script>
+	</body>
 </html>
