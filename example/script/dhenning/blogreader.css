@@ -1,0 +1,15 @@
+.dhenning {
+	font-size: 11px;
+	width: 300px;
+	border: 1px solid #000000;
+	padding: 10px;
+	margin: 10px;
+}
+	
+	.dhenning article {
+		margin-bottom: 4em;
+	}
+
+	.dhenning h2 {
+		font-size: 12px;
+	}
