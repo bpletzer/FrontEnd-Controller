@@ -7,7 +7,9 @@ define(['jquery'], function ($){
       var items = [];
 
       $.each(data.data, function(key, val) {
-        items.push('<li id="' + key + '"><img src="' + val.author.avatar_url + '" alt="' + val.author.login + '" style="width:50px;height:50px"/> ' + val.commit.message + '</li>');
+        if(val.author != null){
+            items.push('<li id="' + key + '"><img src="' + val.author.avatar_url + '" alt="' + val.author.login + '" style="width:50px;height:50px"/> ' + val.commit.message + '</li>');
+        }
       });
 
       $('<h2>Github Commits</h2>')
